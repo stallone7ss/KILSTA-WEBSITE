@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-navy-900;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgba(46, 196, 182, 0.28);
+    color: #061530;
+  }
+
+  :focus-visible {
+    outline: 3px solid #14a89d;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-teal-500 text-white shadow-sm hover:bg-teal-600 focus-visible:bg-teal-600;
+  }
+
+  .btn-secondary {
+    @apply btn bg-navy-900 text-white hover:bg-navy-800;
+  }
+
+  .btn-outline {
+    @apply btn border border-navy-200 bg-white text-navy-900 hover:border-navy-300 hover:bg-navy-50;
+  }
+
+  .btn-light {
+    @apply btn bg-white text-navy-900 hover:bg-navy-50;
+  }
+
+  .btn-ghost {
+    @apply btn text-navy-800 hover:bg-navy-50;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700;
+  }
+
+  .btn-sm {
+    @apply rounded-md px-3 py-2 text-xs;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-navy-900;
+  }
+
+  .field-hint {
+    @apply mt-1.5 text-xs text-slate-500;
+  }
+
+  .field-error {
+    @apply mt-1.5 flex items-start gap-1 text-xs font-medium text-red-700;
+  }
+
+  .input-base {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-ink shadow-sm transition placeholder:text-slate-400 hover:border-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500;
+  }
+
+  .input-error {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-500/20;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-card;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-teal-600;
+  }
+
+  .prose-kilsta {
+    @apply text-[15px] leading-7 text-slate-600;
+  }
+
+  .prose-kilsta h2 {
+    @apply mb-3 mt-10 text-xl font-semibold text-navy-900;
+  }
+
+  .prose-kilsta h3 {
+    @apply mb-2 mt-7 text-base font-semibold text-navy-900;
+  }
+
+  .prose-kilsta p {
+    @apply mb-4;
+  }
+
+  .prose-kilsta ul {
+    @apply mb-4 list-disc space-y-2 pl-5;
+  }
+
+  .prose-kilsta a {
+    @apply font-medium text-teal-700 underline decoration-teal-300 underline-offset-2 hover:text-teal-800;
+  }
+
+  .prose-kilsta strong {
+    @apply font-semibold text-navy-900;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-navy-900 focus:px-4 focus:py-2 focus:text-white;
+  }
+}
+
+/* Thin, unobtrusive scrollbars in admin tables */
+.scroll-thin::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Decorative grid for dark hero panels */
+.grid-overlay {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 78%);
+}

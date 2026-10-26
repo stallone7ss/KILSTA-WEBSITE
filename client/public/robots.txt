@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /KILSTA-WEBSITE/admin
+Disallow: /KILSTA-WEBSITE/login
+Disallow: /KILSTA-WEBSITE/reset-password
+
+Sitemap: https://stallone7ss.github.io/KILSTA-WEBSITE/sitemap.xml

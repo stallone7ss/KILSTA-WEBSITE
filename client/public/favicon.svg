@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="KILSTA">
+  <rect width="64" height="64" rx="14" fill="#0a1f44"/>
+  <path d="M17 15h8v15l13-15h10L33 32l16 17H39L25 34v15h-8V15z" fill="#ffffff"/>
+  <circle cx="49" cy="18" r="4" fill="#2ec4b6"/>
+</svg>

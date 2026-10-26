@@ -157,9 +157,21 @@ See [docs/TESTING.md](docs/TESTING.md) for coverage detail and the live RLS test
 
 These values are centralised in `client/src/lib/company.ts` and the seeded `company_profile` site setting.
 
+## Deployment target
+
+The public client is configured for GitHub Pages at:
+
+```text
+https://stallone7ss.github.io/KILSTA-WEBSITE/
+```
+
+`.github/workflows/pages.yml` builds the Vite client with the `/KILSTA-WEBSITE/` base path and deploys it on pushes to `main`. The repository's Pages source must be set to **GitHub Actions**, and the Actions secrets `VITE_API_BASE_URL`, `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` must be configured for a functional deployment.
+
+GitHub Pages hosts static files only. The Express API and Supabase project must be deployed separately; see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
 ## Status and limitations
 
+- The GitHub Pages workflow and Vite base-path support are configured, but the live deployment has not been verified from this workspace.
 - No production Supabase, Render, Vercel or email credentials are included in this repository. Deployment, live authentication, RLS execution and email delivery have therefore **not** been verified against real infrastructure.
-- The repository is not currently a Git repository in this workspace, and the Git CLI is unavailable on the Windows host used for development. CI is configured but has not run on a remote host.
 - The hosted CI workflow has not been executed. Local equivalents have been executed; exact local results are recorded above.
 - `npm audit` reports dependency advisories, including some that require breaking framework upgrades. See [docs/SECURITY.md](docs/SECURITY.md) for the current audit position.
