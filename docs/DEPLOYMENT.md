@@ -8,7 +8,7 @@ Recommended topology:
 
 The client and API are separate origins, so the API CORS allow-list must include the exact client origin (and any explicitly trusted preview origins). For the GitHub Pages site the browser origin is `https://stallone7ss.github.io`, not the `/KILSTA-WEBSITE/` path.
 
-> No deployment has been performed from this workspace. The steps below are the intended production procedure; treat them as unverified until executed with real credentials.
+> The static client has been deployed to GitHub Pages and the public shell is verified. No Supabase project, API service or email provider has been deployed, so the backend steps below remain an unexecuted production procedure.
 
 > GitHub Pages hosts static files only. The Express API cannot run there. Forms, authentication, catalogue data and the admin dashboard only work after the API and Supabase project are deployed and the Pages build is given their URLs.
 

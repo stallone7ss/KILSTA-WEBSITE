@@ -165,13 +165,14 @@ The public client is configured for GitHub Pages at:
 https://stallone7ss.github.io/KILSTA-WEBSITE/
 ```
 
-`.github/workflows/pages.yml` builds the Vite client with the `/KILSTA-WEBSITE/` base path and deploys it on pushes to `main`. The repository's Pages source must be set to **GitHub Actions**, and the Actions secrets `VITE_API_BASE_URL`, `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` must be configured for a functional deployment.
+`.github/workflows/pages.yml` builds the Vite client with the `/KILSTA-WEBSITE/` base path and deploys it on pushes to `main`. The repository's Pages source is set to **GitHub Actions**. The Actions secrets `VITE_API_BASE_URL`, `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` must be configured for a functional deployment.
 
 GitHub Pages hosts static files only. The Express API and Supabase project must be deployed separately; see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## Status and limitations
 
-- The GitHub Pages workflow and Vite base-path support are configured, but the live deployment has not been verified from this workspace.
+- The static client deployment is live and verified: `https://stallone7ss.github.io/KILSTA-WEBSITE/` serves the Vite build, its hashed JS/CSS assets return `200`, and deep links such as `/KILSTA-WEBSITE/about` fall back to the SPA shell via `404.html` (GitHub Pages returns HTTP `404` for those paths by design, and the React router renders the route).
+- The repository Actions secrets are **not** configured, so the live build contains no Supabase URL and uses the relative `/api/v1` API base. Authentication, catalogue data, form submissions and the admin dashboard therefore do not work on the live site.
 - No production Supabase, Render, Vercel or email credentials are included in this repository. Deployment, live authentication, RLS execution and email delivery have therefore **not** been verified against real infrastructure.
-- The hosted CI workflow has not been executed. Local equivalents have been executed; exact local results are recorded above.
+- Hosted CI and the GitHub Pages workflow have both run successfully on the `main` branch. Local equivalents have also been executed; exact local results are recorded above.
 - `npm audit` reports dependency advisories, including some that require breaking framework upgrades. See [docs/SECURITY.md](docs/SECURITY.md) for the current audit position.
