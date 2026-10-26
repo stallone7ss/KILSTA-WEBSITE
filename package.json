@@ -1,0 +1,34 @@
+{
+  "name": "kilsta-business-ict",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KILSTA Business & ICT Consultants - production monorepo (React/Vite frontend, Express API, Supabase PostgreSQL)",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "npm --workspace client run dev",
+    "dev:server": "npm --workspace server run dev",
+    "build": "npm run build:server && npm run build:client",
+    "build:client": "npm --workspace client run build",
+    "build:server": "npm --workspace server run build",
+    "lint": "npm --workspace server run lint && npm --workspace client run lint",
+    "typecheck": "npm --workspace server run typecheck && npm --workspace client run typecheck",
+    "test": "npm --workspace server run test:run && npm --workspace client run test:run",
+    "test:server": "npm --workspace server run test:run",
+    "test:client": "npm --workspace client run test:run",
+    "test:watch": "npm --workspace server run test",
+    "start": "npm --workspace server run start",
+    "ci": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "caniuse-lite": "^1.0.30001819",
+    "concurrently": "^9.1.2",
+    "jsdom": "^25.0.1"
+  }
+}
