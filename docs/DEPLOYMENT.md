@@ -32,13 +32,15 @@ Record:
 
 ## 2. Deploy the API to Render
 
-Create a **Web Service** from the repository.
+The repository includes `render.yaml`, so the fastest path is **Render Dashboard → New → Blueprint → connect `stallone7ss/KILSTA-WEBSITE`**. The blueprint creates one free Node web service named `kilsta-api` with the Supabase URL, publishable key, GitHub Pages origin and a generated audit salt already set. You are prompted for `SUPABASE_SECRET_KEY`, which is the only value the blueprint does not store in Git.
+
+Alternatively, create a **Web Service** manually from the repository.
 
 | Setting | Value |
 | --- | --- |
 | Environment | Node |
 | Root Directory | repository root |
-| Build Command | `npm ci && npm run build:server` |
+| Build Command | `npm ci --include=dev && npm run build:server` |
 | Start Command | `npm --workspace server run start` |
 | Health Check Path | `/health/ready` |
 | Auto-Deploy | On commit to the production branch |

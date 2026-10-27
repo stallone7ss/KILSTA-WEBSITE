@@ -1,0 +1,54 @@
+# Render Blueprint for the KILSTA API.
+#
+# The browser client is hosted on GitHub Pages and cannot run the API.
+# This file provisions the Express service only. The database, Auth and
+# Storage live in the existing Supabase project.
+#
+# Deploy: Render Dashboard -> New -> Blueprint -> connect this repository.
+# Then supply the value for SUPABASE_SECRET_KEY when prompted.
+
+services:
+  - type: web
+    name: kilsta-api
+    runtime: node
+    plan: free
+    region: singapore
+    autoDeploy: true
+    healthCheckPath: /health/ready
+    buildCommand: npm ci --include=dev && npm run build:server
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "1"
+
+      # Supabase project (public values are safe in the repository;
+      # the secret key is intentionally sync:false and must be entered
+      # in the Render dashboard).
+      - key: SUPABASE_URL
+        value: https://tmyccinmmmwcqwosidja.supabase.co
+      - key: SUPABASE_PUBLISHABLE_KEY
+        value: sb_publishable_XILEHSNK4ZQWPSR8zsit3Q_tazRBbGV
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+
+      # Exact browser origin of the GitHub Pages site. Browsers send only
+      # the origin, never the /KILSTA-WEBSITE/ path.
+      - key: FRONTEND_URL
+        value: https://stallone7ss.github.io
+
+      # Email delivery is disabled until a provider is configured.
+      # Submissions are stored and notification status is recorded as "skipped".
+      - key: EMAIL_PROVIDER
+        value: none
+      - key: EMAIL_FROM
+        value: KILSTA Business & ICT Consultants <no-reply@example.com>
+      - key: ADMIN_NOTIFICATION_EMAIL
+        value: kilsta2023@gmail.com
+
+      # Salt for hashed IP addresses in the audit log.
+      - key: AUDIT_IP_SALT
+        generateValue: true
